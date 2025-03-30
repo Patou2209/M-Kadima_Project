@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Great+Vibes&family=Oswald:wght@200..700&family=Satisfy&display=swap" rel="stylesheet">
 </head>
+
 <div class="top-bar">
     <div>
     <i class="fa fa-facebook" aria-hidden="true"> </i>
@@ -21,9 +22,9 @@
     </div>
     <div class="auth-buttons">
         <a href="https://wa.me/27698089022"><button class="apply">Contactez-nous</button></a>
-    </div>
-   
+    </div>  
 </div>
+
 <!-- barre de navigation-->
 <nav class="navbar">
     <div class="logo">
@@ -37,15 +38,13 @@
         
     </ul>
 </nav>
+
 <body>
     <div class="showcase">
-        <div class="showcase-content">
-            
-        </div>
+        <div class="showcase-content"><!--le show case--></div>
     </div>   
-    
+    <!--le container pricipal qui a le width de 90%-->
     <div class="container-main">
-
         <h1 class="titre"> Qui sommes-nous?</h1>
         
             <main>
@@ -117,28 +116,59 @@
                 <p>Bureau: 25, Rue des Peintres, Ngaliema/KINSHASA</p>
                 <p>Siège social: 5, Avenue des Arts, Lingwala/KINSHASA</p></i>
             </div>
-</div>
-            
- <footer class="footer">
-    &copy; 2025 ETS M KADIMA. Tous droits réservés. <br>
-    designed by <b>KAZIAMA MUPESE</b>
-    <div class="social">
-        <i class="fa fa-facebook" aria-hidden="true"> </i>
-        <i class="fa fa-twitter" aria-hidden="true"></i>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-        <i class="fa fa-linkedin" aria-hidden="true"></i>
-        <i class="fa fa-youtube" aria-hidden="true"></i>
-        </div>
- </footer>               
-        
-<!--fin main container-->
-
+    </div>
+        <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
 </body>
-</html>
+    <footer class="footer">
+        &copy; 2025 ETS M KADIMA. Tous droits réservés. <br>
+        designed by <b>KAZIAMA MUPESE</b>
+        <div class="social">
+            <i class="fa fa-facebook" aria-hidden="true"> </i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+            <i class="fa fa-youtube" aria-hidden="true"></i>
+        </div>
+    </footer>  
+ <!-- Lightbox script -->
 
+<script>document.addEventListener("DOMContentLoaded", function () {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector(".close");
+    const galleryItems = document.querySelectorAll(".card img"); /// dans la parenthese, dont card img pour que ça prenne les images de cette classe pour l'afficher apres le click
 
+    if (!lightbox || !lightboxImg || !closeBtn || galleryItems.length === 0) {
+        console.error("Lightbox: Un élément est manquant !");
+        return;
+    }
 
+    // Ouvrir le Lightbox au clic sur une image
+    galleryItems.forEach(img => {
+        img.addEventListener("click", function () {
+            console.log("Image cliquée :", this.src);
+            lightbox.style.display = "flex";
+            lightboxImg.src = this.src;
+        });
+    });
 
+    // Fermer le Lightbox au clic sur (X)
+    closeBtn.addEventListener("click", function () {
+        lightbox.style.display = "none";
+    });
+
+    // Fermer le Lightbox en cliquant en dehors de l'image
+    lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) {
+            lightbox.style.display = "none";
+        }
+    });
+});
+
+</script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>document.addEventListener("DOMContentLoaded", function () {
@@ -149,5 +179,5 @@
             navLinks.classList.toggle("show");
         });
     });</script>
-</body>
+
 </html>

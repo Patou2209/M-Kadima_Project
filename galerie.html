@@ -163,6 +163,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
 </body>
 <footer class="footer">
         &copy; 2025 ETS M KADIMA. Tous droits réservés. <br>
@@ -175,6 +181,40 @@
             <i class="fa fa-youtube" aria-hidden="true"></i>
             </div>
 </footer> 
+<script>document.addEventListener("DOMContentLoaded", function () {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector(".close");
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+
+    if (!lightbox || !lightboxImg || !closeBtn || galleryItems.length === 0) {
+        console.error("Lightbox: Un élément est manquant !");
+        return;
+    }
+
+    // Ouvrir le Lightbox au clic sur une image
+    galleryItems.forEach(img => {
+        img.addEventListener("click", function () {
+            console.log("Image cliquée :", this.src);
+            lightbox.style.display = "flex";
+            lightboxImg.src = this.src;
+        });
+    });
+
+    // Fermer le Lightbox au clic sur (X)
+    closeBtn.addEventListener("click", function () {
+        lightbox.style.display = "none";
+    });
+
+    // Fermer le Lightbox en cliquant en dehors de l'image
+    lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) {
+            lightbox.style.display = "none";
+        }
+    });
+});
+
+</script>
 
     <script>document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll(".filter-buttons button");

@@ -58,6 +58,12 @@
             </ul>
         </p>
         <p>Chaque œuvre raconte une histoire et apporte une touche unique à votre espace. Laissez-nous donner vie à vos idées à travers l’art ! 🎭✨</p>
+        <!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
 </body>   
 <footer class="footer">
             &copy; 2025 ETS M KADIMA. Tous droits réservés. <br>
@@ -70,6 +76,33 @@
                 <i class="fa fa-youtube" aria-hidden="true"></i>
             </div>
 </footer> 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector(".close");
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+
+    // Ouvrir le lightbox au clic sur une image
+    galleryItems.forEach(img => {
+        img.addEventListener("click", function () {
+            lightbox.style.display = "flex";
+            lightboxImg.src = this.src;
+        });
+    });
+
+    // Fermer le lightbox en cliquant sur le bouton (X) ou en dehors de l'image
+    closeBtn.addEventListener("click", function () {
+        lightbox.style.display = "none";
+    });
+
+    lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) {
+            lightbox.style.display = "none";
+        }
+    });
+});
+</script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const toggleButton = document.querySelector(".menu-toggle");
